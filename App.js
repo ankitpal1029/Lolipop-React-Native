@@ -1,23 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
+import React  from 'react';
 import { SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import MyCarousel from './components/carousel/carousel.component';
+import MyCarousel from './components/carousel.component';
 import NavBar from './components/navbar.component';
+import YoutubePlayer from 'react-native-youtube-iframe';
+import TopBar from './components/topbar.component';
 
-const { statusWidth, statusHeight } = StatusBar;
 
 export default function App() {
-  const [screentext, changeScreenText] = useState('some text');
 
   return (
     <SafeAreaView style={{flex:1}}>
-    <View style={styles.container}>
-      {/*<StatusBar style="light" />*/}
-      <StatusBar style="dark"/>
-      <NavBar/>
-      {/*<MyCarousel/>*/}
-      <MyCarousel />
-    </View>
+      <View style={styles.container}>
+        {/*<StatusBar style="light" />*/}
+        <StatusBar style="dark"/>
+        <NavBar/>
+        <TopBar/>
+        {/*<MyCarousel/>*/}
+        <MyCarousel />
+        <View>
+          {/*<YoutubePlayer
+            height={300}
+            play={true}
+            videoId={'84WIaK3bl_s'}
+          />*/}
+
+        </View>
+      </View>
     </SafeAreaView>
   );
 }

@@ -1,16 +1,14 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Pressable} from 'react-native';
 import Icon from 'react-native-ico';
 
 
-export default function NavBar() {
+export default function TopBar() {
 
   return (
-      <View style={styles.NavContainer}>
-        <View style={styles.NavBar}>
-          <View>
-            <Text style={styles.TextBehave}>Lolipop</Text>
-          </View>
+      <View style={styles.TopBarContainer}>
+        <View style={styles.TopBar}>
           <View style={{flexDirection: 'row'}}>
             <Pressable 
               onPress={() => changeText('Favourites')} 
@@ -19,6 +17,7 @@ export default function NavBar() {
             >
               {/*<Icon name="magnifying-glass" height="26" width="26" color="#448aff"/>*/}
               <Icon name="magnifying-glass" group="font-awesome" color="#fff"/>
+              
             </Pressable>
             <Pressable 
               onPress={() => changeText('Favourites')} 
@@ -34,24 +33,20 @@ export default function NavBar() {
 }
 
 const styles = StyleSheet.create({
-  NavContainer: {
+  TopBarContainer: {
     position: 'relative',
     alignItems: 'center',
+    borderTopWidth: 1,
+    borderTopColor: '#3d3b3b',
     //top: 30,
   },
-  NavBar: {
+  TopBar: {
     flexDirection: 'row',
     backgroundColor: '#2b2b2b',
     width: '100%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-around',
   },
   IconBehave: {
     padding: 14
   },
-  TextBehave: {
-    paddingLeft:5, 
-    color: "#753296", 
-    fontSize: 26, 
-    fontWeight: "bold"
-  }
 });
