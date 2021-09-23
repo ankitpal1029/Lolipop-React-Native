@@ -10,36 +10,56 @@ import { SafeAreaView,
 //import YoutubePlayer from 'react-native-youtube-iframe';
 import somevid from '../resources/pan.mp4';
 import { Video } from 'expo-av';
+import BottomDeck from '../components/bottomdeck.component';
+import Swiper from 'react-native-swiper';
 
 const screen = Dimensions.get('screen');
 
 
-export default function VideoScreen() {
+export default function VideoScreen({ navigation }) {
   const video = React.useRef(null);
-  const [playStatus, setStatus] = useState(true);
+  const [paused, setPaused] = useState(false);
   const onPlayPausePress = () => {
-    setStatus(!playStatus);
+    setPaused(!paused);
   }
+
+  const onSwipe =(index) => {
+    console.warn(index);
+  }
+
+  
   return (
     <View style={styles.container}>
-      <View >
-        <TouchableWithoutFeedback 
-          onPress={onPlayPausePress}
-        >
+      <Swiper 
+        horizontal={false}
+        showsButtons={false}
+        showsPagination={false}
+        onIndexChanged={(index) => onSwipe(index)}
+      > 
+        <View >
+          <TouchableWithoutFeedback 
+            onPress={onPlayPausePress}
+          >
+
             <Video
-            ref={video}
-            style={styles.video}
-            //source={{
-              //uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
-            //}}
-            source={somevid}
-            resizeMode="cover"
-            shouldPlay={false}
-            isLooping={false}
-            onPlaybackStatusUpdate={status => setStatus(() => status)}
-          />
-      </TouchableWithoutFeedback>
-      </View>
+              ref={video}
+              style={styles.video}
+              //source={{
+                //uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+                //uri: 'https://youtu.be/pgDOpIm6ozQ'
+              //}}
+              source={somevid}
+              resizeMode="cover"
+              shouldPlay={paused}
+              isLooping={false}
+            />
+        </TouchableWithoutFeedback>
+        </View>
+        <View>
+          <Text>sdlfksdf</Text>
+        </View>
+      </Swiper>
+        <BottomDeck navigation={navigation}/>
     </View>
   );
 };

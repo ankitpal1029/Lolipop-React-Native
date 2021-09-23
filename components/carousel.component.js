@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
-import {Image, Video} from 'react-native';
+import {Image, Pressable, TouchableOpacity, Video} from 'react-native';
 import {
   View,
   Text,
@@ -12,38 +12,28 @@ import {
 const ENTRIES1 = [
   {
     title: 'Beautiful and dramatic Antelope Canyon',
-    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-    illustration: 'https://i.imgur.com/UPrs1EWl.jpg',
     uri: 'BBJa32lCaaY'
   },
   {
     title: 'Earlier this morning, NYC',
-    subtitle: 'Lorem ipsum dolor sit amet',
-    illustration: 'https://i.imgur.com/UPrs1EWl.jpg',
     uri: '8rAyO8ZTkns'
   },
   {
     title: 'White Pocket Sunset',
-    subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
-    illustration: 'https://i.imgur.com/MABUbpDl.jpg',
     uri: '84WIaK3bl_s'
   },
   {
     title: 'Acrocorinth, Greece',
-    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-    illustration: 'https://i.imgur.com/KZsmUi2l.jpg',
     uri: 'V1Sqyfy3CT4'
   },
   {
     title: 'The lone tree, majestic landscape of New Zealand',
-    subtitle: 'Lorem ipsum dolor sit amet',
-    illustration: 'https://i.imgur.com/2nCt3Sbl.jpg',
     uri: 'AaMUrxJCZ6Y'
   },
 ];
 const {width: screenWidth} = Dimensions.get('window');
 
-const MyCarousel = props => {
+const MyCarousel = ({props, navigation})=> {
   const [entries, setEntries] = useState([]);
   const carouselRef = useRef(null);
 
@@ -52,19 +42,25 @@ const MyCarousel = props => {
   }, []);
 
   const renderItem = ({item, index}, parallaxProps) => {
+    const storyClick = (videoInfo) => {
+      navigation.navigate("Video");
+      console.warn(navigation);
+    }
     return (
-      <View style={styles.item}>
-        <ParallaxImage
-          source={{uri: `https://img.youtube.com/vi/${item.uri}/maxresdefault.jpg`}}
-          containerStyle={styles.imageContainer}
-          style={styles.image}
-          {...parallaxProps}
-        />
+      <TouchableOpacity
+        style={styles.item}
+        onPress={() => {storyClick("sdlf")}}
+      >
+          <Image
+            source={{uri: `https://img.youtube.com/vi/${item.uri}/maxresdefault.jpg`}}
+            containerStyle={styles.imageContainer}
+            style={styles.image}
+          />
 
         <Text style={styles.title} numberOfLines={2}>
           {item.title}
         </Text>
-      </View>
+      </TouchableOpacity>
     );
   };
 

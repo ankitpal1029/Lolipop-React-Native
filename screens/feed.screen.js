@@ -9,15 +9,15 @@ import BottomDeck from '../components/bottomdeck.component';
 import { StatusBar } from 'expo-status-bar';
 
 
-export default function FeedScreen() {
+export default function FeedScreen({navigation}) {
   return (
       <SafeAreaView style={{flex:1}}>
         <StatusBar style="auto"/>
         <View style={styles.container}>
           <NavBar/>
           <TopBar/>
-          <MyCarousel />
-          <BottomDeck/>
+          <MyCarousel navigation={navigation}/>
+          <BottomDeck navigation={navigation}/>
           <View>
             {/*<YoutubePlayer
               height={300}

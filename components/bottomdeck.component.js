@@ -3,7 +3,14 @@ import { StyleSheet, View, Pressable} from 'react-native';
 import Icon from 'react-native-ico'
 
 
-export default function BottomDeck() {
+export default function BottomDeck({navigation}) {
+
+  const deckButtonPress = (deckvalue) => {
+    if(deckvalue == "home"){
+      //navigation.navigate("Feed");
+      navigation.navigate("Feed");
+    }
+  }
 
   return (
       <View style={styles.BottomDeckContainer}>
@@ -12,9 +19,39 @@ export default function BottomDeck() {
             <Pressable 
               style={styles.IconBehave} 
               android_ripple={{borderless:true, radius: 50}}
+              onPress={() => deckButtonPress("home")}
             >
-              <Icon name="magnifying-glass" height="20" width="20" color="#448aff"/>
+              <Icon 
+                name="home" 
+                group="universalicons" 
+                style={styles.IconStyle}
+                color="white"
+              />
               
+            </Pressable>
+            <Pressable 
+              style={styles.IconBehave} 
+              android_ripple={{borderless:true, radius: 50}}
+            >
+              <Icon 
+                name="magnifying-glass"
+                group="font-awesome" 
+                style={styles.IconStyle}
+                color="white"
+              />
+              
+            </Pressable>
+            <Pressable 
+              style={styles.IconBehave} 
+              android_ripple={{borderless:true, radius: 50}}
+            >
+              
+              <Icon 
+                name="user-outline" 
+                group="material-design" 
+                style={styles.IconStyle}
+                color="white"
+              />
             </Pressable>
           </View>
         </View>
@@ -35,9 +72,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#2b2b2b',
     width: '80%',
-    borderRadius: 40
+    borderRadius: 40,
+    justifyContent: 'space-evenly'
   },
   IconBehave: {
     padding: 15
   },
+  IconStyle: {
+    height:20,
+    width:20,
+    color:"#fff"
+  }
 });

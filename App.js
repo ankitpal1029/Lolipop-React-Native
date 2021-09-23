@@ -1,6 +1,5 @@
 import React  from 'react';
-import { SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import YoutubePlayer from 'react-native-youtube-iframe';
+import { StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FeedScreen from './screens/feed.screen';
