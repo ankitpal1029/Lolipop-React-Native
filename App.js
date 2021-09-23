@@ -1,33 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
 import React  from 'react';
 import { SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import MyCarousel from './components/carousel.component';
-import NavBar from './components/navbar.component';
 import YoutubePlayer from 'react-native-youtube-iframe';
-import TopBar from './components/topbar.component';
+import {NavigationContainer} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import FeedScreen from './screens/feed.screen';
+import VideoScreen from './screens/video.screen'
 
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 
   return (
-    <SafeAreaView style={{flex:1}}>
-      <View style={styles.container}>
-        {/*<StatusBar style="light" />*/}
-        <StatusBar style="dark"/>
-        <NavBar/>
-        <TopBar/>
-        {/*<MyCarousel/>*/}
-        <MyCarousel />
-        <View>
-          {/*<YoutubePlayer
-            height={300}
-            play={true}
-            videoId={'84WIaK3bl_s'}
-          />*/}
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Video" component={VideoScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="Feed" component={FeedScreen} options={{headerShown: false}}/>
+      </Stack.Navigator>
+      {/*<SafeAreaView style={{flex:1}}>
+        <StatusBar style="auto"/>
+        <View style={styles.container}>
+          <NavBar/>
+          <TopBar/>
+          <MyCarousel />
+          <BottomDeck/>
+          <View>*/}
+            {/*<YoutubePlayer
+              height={300}
+              play={true}
+              videoId={'84WIaK3bl_s'}
+            />*/}
 
+      {/*</View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>*/}
+    </NavigationContainer>
   );
 }
 

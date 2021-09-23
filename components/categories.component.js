@@ -1,13 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Pressable} from 'react-native';
+import { StyleSheet, Text, View, Pressable} from 'react-native';
 
 
-export default function TopBar() {
+export default function Categories() {
 
   return (
       <View style={styles.TopBarContainer}>
         <View style={styles.TopBar}>
           <View style={{flexDirection: 'row'}}>
+            
             <Pressable 
               onPress={() => changeText('Favourites')} 
               style={styles.IconBehave} 
