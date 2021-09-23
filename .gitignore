@@ -52,4 +52,5 @@ buck-out/
 # Expo
 .expo/
 web-build/
-./large_files/
+large_files/
+resources/
