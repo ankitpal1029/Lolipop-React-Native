@@ -3,11 +3,16 @@ import { StyleSheet, View, Pressable} from 'react-native';
 import Icon from 'react-native-ico'
 
 
-export default function BottomDeck({navigation}) {
+export default function BottomDeck({navigation, stopPlay}) {
 
   const deckButtonPress = (deckvalue) => {
     if(deckvalue == "home"){
       //navigation.navigate("Feed");
+      try{
+        stopPlay(-1);
+      }catch{
+        navigation.navigate("Feed");
+      }
       navigation.navigate("Feed");
     }
   }

@@ -12,26 +12,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Video" component={VideoScreen} options={{headerShown: false}}/>
         <Stack.Screen name="Feed" component={FeedScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="Video" component={VideoScreen} options={{headerShown: false}}/>
       </Stack.Navigator>
-      {/*<SafeAreaView style={{flex:1}}>
-        <StatusBar style="auto"/>
-        <View style={styles.container}>
-          <NavBar/>
-          <TopBar/>
-          <MyCarousel />
-          <BottomDeck/>
-          <View>*/}
-            {/*<YoutubePlayer
-              height={300}
-              play={true}
-              videoId={'84WIaK3bl_s'}
-            />*/}
-
-      {/*</View>
-        </View>
-      </SafeAreaView>*/}
     </NavigationContainer>
   );
 }

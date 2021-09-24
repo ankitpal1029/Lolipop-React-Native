@@ -11,22 +11,27 @@ import {
 
 const ENTRIES1 = [
   {
+    id: 0,
     title: 'Beautiful and dramatic Antelope Canyon',
     uri: 'BBJa32lCaaY'
   },
   {
+    id: 1,
     title: 'Earlier this morning, NYC',
     uri: '8rAyO8ZTkns'
   },
   {
+    id: 2,
     title: 'White Pocket Sunset',
-    uri: '84WIaK3bl_s'
+    uri: 'lpcpsCY4Mco'
   },
   {
+    id: 3,
     title: 'Acrocorinth, Greece',
     uri: 'V1Sqyfy3CT4'
   },
   {
+    id: 4,
     title: 'The lone tree, majestic landscape of New Zealand',
     uri: 'AaMUrxJCZ6Y'
   },
@@ -43,8 +48,11 @@ const MyCarousel = ({props, navigation})=> {
 
   const renderItem = ({item, index}, parallaxProps) => {
     const storyClick = (videoInfo) => {
-      navigation.navigate("Video");
-      console.warn(navigation);
+      //console.warn(index);
+      navigation.navigate("Video",{
+        vidId: index
+      });
+      //console.warn(navigation);
     }
     return (
       <TouchableOpacity

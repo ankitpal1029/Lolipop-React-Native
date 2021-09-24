@@ -8,23 +8,64 @@ import { SafeAreaView,
   TouchableWithoutFeedback
 } from 'react-native';
 //import YoutubePlayer from 'react-native-youtube-iframe';
-import somevid from '../resources/pan.mp4';
+import rick from '../resources/rick.mp4';
+import jeenie from '../resources/jeenie.mp4'
+import joma from '../resources/joma.mp4';
+import valo from '../resources/valo.mp4';
+import tommy from '../resources/tommy.mp4';
+
+
 import { Video } from 'expo-av';
 import BottomDeck from '../components/bottomdeck.component';
 import Swiper from 'react-native-swiper';
 
 const screen = Dimensions.get('screen');
 
+let VideoStream = [
+  {
+    id: 0,
+    vid: rick
+  },
+  {
+    id: 0,
+    vid: jeenie,
+  },
+  {
+    id: 0,
+    vid: joma,
+  },
+  {
+    id: 0,
+    vid: valo,
+  },
+  {
+    id: 0,
+    vid: tommy
+  }
+]
 
-export default function VideoScreen({ navigation }) {
+export default function VideoScreen({ route, navigation }) {
+  const { vidId } = route.params;
   const video = React.useRef(null);
-  const [paused, setPaused] = useState(false);
+  const [playing, setPlaying] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+
   const onPlayPausePress = () => {
-    setPaused(!paused);
+    if(playing == -1){
+      setPlaying(currentPage);
+    }
+    if(currentPage == playing){
+      setPlaying(-1);
+    }
   }
 
   const onSwipe =(index) => {
-    console.warn(index);
+    setCurrentPage(index);
+    setPlaying(index);
+  }
+
+  const stopPlay = (val) => {
+    setPlaying(-1);
   }
 
   
@@ -34,32 +75,104 @@ export default function VideoScreen({ navigation }) {
         horizontal={false}
         showsButtons={false}
         showsPagination={false}
-        onIndexChanged={(index) => onSwipe(index)}
+        onIndexChanged={(index) => { return onSwipe(index)}}
       > 
+
         <View >
           <TouchableWithoutFeedback 
             onPress={onPlayPausePress}
           >
-
             <Video
               ref={video}
               style={styles.video}
-              //source={{
-                //uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
-                //uri: 'https://youtu.be/pgDOpIm6ozQ'
-              //}}
-              source={somevid}
+              source={VideoStream[vidId].vid}
               resizeMode="cover"
-              shouldPlay={paused}
-              isLooping={false}
+              shouldPlay={playing == 0? true: false}
+              isLooping={true}
             />
-        </TouchableWithoutFeedback>
+          </TouchableWithoutFeedback>
         </View>
-        <View>
-          <Text>sdlfksdf</Text>
+
+
+        <View >
+          <TouchableWithoutFeedback 
+            onPress={onPlayPausePress}
+          >
+            <Video
+              ref={video}
+              style={styles.video}
+              source={rick}
+              resizeMode="cover"
+              shouldPlay={playing == 1? true: false}
+              isLooping={true}
+            />
+          </TouchableWithoutFeedback>
         </View>
-      </Swiper>
-        <BottomDeck navigation={navigation}/>
+
+        <View >
+          <TouchableWithoutFeedback 
+            onPress={onPlayPausePress}
+          >
+            <Video
+              ref={video}
+              style={styles.video}
+              source={jeenie}
+              resizeMode="cover"
+              shouldPlay={playing == 2? true: false}
+              isLooping={true}
+            />
+          </TouchableWithoutFeedback>
+        </View>
+
+        <View >
+          <TouchableWithoutFeedback 
+              onPress={onPlayPausePress}
+            >
+              <Video
+                ref={video}
+                style={styles.video}
+                source={joma}
+                resizeMode="cover"
+                shouldPlay={playing == 3? true: false}
+                isLooping={true}
+              />
+          </TouchableWithoutFeedback>
+        </View>
+
+        <View >
+          <TouchableWithoutFeedback 
+              onPress={onPlayPausePress}
+            >
+              <Video
+                ref={video}
+                style={styles.video}
+                source={valo}
+                resizeMode="cover"
+                shouldPlay={playing == 4? true: false}
+                isLooping={true}
+              />
+          </TouchableWithoutFeedback>
+        </View>
+        
+        <View >
+          <TouchableWithoutFeedback 
+              onPress={onPlayPausePress}
+            >
+              <Video
+                ref={video}
+                style={styles.video}
+                source={tommy}
+                resizeMode="cover"
+                shouldPlay={playing == 5? true: false}
+                isLooping={true}
+              />
+          </TouchableWithoutFeedback>
+        </View>
+     </Swiper>
+        <BottomDeck 
+          navigation={navigation}
+          stopPlay={stopPlay}
+      />
     </View>
   );
 };
