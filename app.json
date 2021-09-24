@@ -5,7 +5,14 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.lolipop.lolipop"
+    }
+  },
+  "android": {
+    "package": "com.yourcompany.yourappname",
+    "versionCode": 1
   },
   "name": "Lolipop"
 }
