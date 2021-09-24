@@ -12,6 +12,13 @@ https://drive.google.com/file/d/1Bj4vSXsHclUO5WN3CHIVfbNcQqlNcLyP/view?usp=shari
 
 ![Check out the demo](readme/demo.gif)
 
+## Libraries used
+
+* *Carousel* react-native-snap-carousel
+* *Video* react-native-video
+* *Swiping the screen to navigate videos* react-native-swiper
+* *Screen Navigation* react-native-screens
+
 ## Setting up dev environment
 
 * *Step1* git clone git@github.com:ankitpal1029/Lolipop-React-Native.git
