@@ -75,7 +75,7 @@ export default function VideoScreen({ route, navigation }) {
         horizontal={false}
         showsButtons={false}
         showsPagination={false}
-        onIndexChanged={(index) => { return onSwipe(index)}}
+        onIndexChanged={(index) => {onSwipe(index)}}
       > 
 
         <View >

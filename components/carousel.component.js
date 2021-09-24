@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native';
+import Icon from 'react-native-ico';
 
 const ENTRIES1 = [
   {
@@ -74,6 +75,23 @@ const MyCarousel = ({props, navigation})=> {
 
   return (
     <View style={styles.container}>
+      <View style={{ flex: 1, flexDirection: 'row', marginBottom: 20,marginTop: 5, marginLeft: 5 }}>
+        <Icon 
+          name="forward-button" 
+          group="font-awesome" 
+          style={styles.IconStyle}
+          color="white" 
+        />
+        <Icon 
+          name="favorite-heart-button" 
+          group="material-design" 
+          style={styles.IconStyle}
+          color="white" 
+        />
+        <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 7}}>
+          <Text style={styles.StoriesTitle}>Stories</Text>
+        </View>
+      </View>
       <Carousel
         ref={carouselRef}
         layout={'default'}
@@ -93,7 +111,8 @@ export default MyCarousel;
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
-    top: 10
+    backgroundColor: '#2b2b2b',
+    top: 2
   },
   item: {
     width: screenWidth /2 - 65,
@@ -114,5 +133,15 @@ const styles = StyleSheet.create({
     bottom: 5,
     left: 5,
     color: 'white'
+  },
+  IconStyle: {
+    height: 10,
+    width: 10
+  },
+  StoriesTitle: {
+    color: 'white',
+    left: 5,
+    fontWeight: 'bold',
+    fontSize:20
   }
 });

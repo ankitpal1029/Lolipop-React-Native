@@ -37,8 +37,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#3d3b3b',
     justifyContent: 'flex-start',
     paddingTop: 30 
-    //backgroundColor: 'white',
-    //alignItems: 'center',
-    //justifyContent: 'center',
   },
 });
