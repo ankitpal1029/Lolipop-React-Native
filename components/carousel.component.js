@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     backgroundColor: '#2b2b2b',
-    top: 2
+    top: 2,
+    paddingBottom: 10
   },
   item: {
     width: screenWidth /2 - 65,

@@ -48,7 +48,9 @@ export default function TopBar() {
             topbarData.map((ele, index) => {
               if((index+1) %2 == 0){
               return (
-                <View style={{
+                <View 
+                  key={index}
+                style={{
                       alignItems: 'center',
                       justifyContent: 'center',
                       margin: 10,
@@ -63,7 +65,9 @@ export default function TopBar() {
 
           }
               return (
-                <View style={{
+                <View 
+                  key={index}
+              style={{
                       alignItems: 'center',
                       justifyContent: 'center',
                       margin: 10,

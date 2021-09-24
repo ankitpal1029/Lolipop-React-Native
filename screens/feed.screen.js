@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import MyCarousel from '../components/carousel.component';
 import NavBar from '../components/navbar.component';
 //import YoutubePlayer from 'react-native-youtube-iframe';
@@ -7,6 +7,7 @@ import TopBar from '../components/topbar.component';
 import BottomDeck from '../components/bottomdeck.component';
 //import {NavigationContainer} from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
+import BottomFeed from '../components/bottomfeed.component';
 
 
 export default function FeedScreen({navigation}) {
@@ -16,16 +17,11 @@ export default function FeedScreen({navigation}) {
         <View style={styles.container}>
           <NavBar/>
           <TopBar/>
+          <ScrollView>
           <MyCarousel navigation={navigation}/>
+            </ScrollView>
           <BottomDeck navigation={navigation}/>
-          <View>
-            {/*<YoutubePlayer
-              height={300}
-              play={true}
-              videoId={'84WIaK3bl_s'}
-            />*/}
 
-          </View>
         </View>
       </SafeAreaView>
   );
